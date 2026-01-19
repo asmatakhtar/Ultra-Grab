@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UltraGrab Pro - Official Professional Video Downloader</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f7f6;
+        }
+        .container {
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 25px;
+            font-size: 1.4em;
+        }
+        .last-updated {
+            text-align: center;
+            font-style: italic;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .note {
+            background-color: #e8f4fd;
+            border-left: 5px solid #3498db;
+            padding: 15px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: #95a5a6;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container nav-flex">
+            <div class="logo">
+                <img src="/assets/icon.png" alt="UltraGrab Logo" class="nav-logo-img">
+                UltraGrab <span class="green">Pro</span>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#sites">Supported Sites</a></li>
+                    <li><a href="#help">How to Use</a></li>
+                    <li><a href="#about">About Developer</a></li>
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-logo-container">
+                <img src="/assets/icon.png" alt="UltraGrab Pro" class="main-hero-logo">
+            </div>
+            <h1>Free Online Video Downloader</h1>
+            <p class="hero-sub">Fast, secure, and production-ready system designed by Asmat Buneri.</p>
+            
+            <div class="search-container">
+                <div class="search-form">
+                    <input type="text" id="urlInput" placeholder="Paste your video or audio link here..." required>
+                    <button onclick="downloadVideo()" id="btn">Download Now</button>
+                </div>
+            </div>
+
+            <div id="progress-area" style="display:none; margin-top:40px; text-align:center;">
+                <p id="percent-text" style="font-weight:bold; color:#00a651; margin-bottom:12px; font-size: 18px;">Analyzing: 0%</p>
+                <div class="progress-bg">
+                    <div id="bar" class="progress-fill"></div>
+                </div>
+                <p class="status-msg">The download will start automatically in your browser after processing.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="sites" class="info-section alternate-bg">
+        <div class="container">
+            <h2 class="section-title">Universal <span class="green">Supported Sites</span></h2>
+            <div class="sites-grid">
+                <div class="site-card"><i class="fa-brands fa-youtube"></i> YouTube & Shorts</div>
+                <div class="site-card"><i class="fa-brands fa-facebook"></i> Facebook & Watch</div>
+                <div class="site-card"><i class="fa-brands fa-instagram"></i> Instagram Reels</div>
+                <div class="site-card"><i class="fa-brands fa-tiktok"></i> TikTok (No Watermark)</div>
+                <div class="site-card"><i class="fa-brands fa-vimeo-v"></i> Vimeo</div>
+                <div class="site-card"><i class="fa-solid fa-music"></i> SoundCloud & Audio</div>
+                <div class="site-card"><i class="fa-brands fa-reddit"></i> Reddit Videos</div>
+                <div class="site-card"><i class="fa-solid fa-globe"></i> 1000+ More Sites</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="help" class="info-section">
+        <div class="container">
+            <h2 class="section-title">How to <span class="green">Download?</span></h2>
+            <div class="help-grid">
+                <div class="help-card">
+                    <div class="step-badge">Step 1</div>
+                    <div class="help-img-container"><img src="assets/step1.png" alt="Copy Link" class="help-step-img"></div>
+                    <h3>Copy Video URL</h3>
+                    <p>Go to the video platform and copy the URL from the address bar or share button.</p>
+                </div>
+                <div class="help-card">
+                    <div class="step-badge">Step 2</div>
+                    <div class="help-img-container"><img src="assets/step 2 .png" alt="Paste Link" class="help-step-img"></div>
+                    <h3>Paste in UltraGrab</h3>
+                    <p>Paste the link into our downloader field and click the Download button to start.</p>
+                </div>
+                <div class="help-card">
+                    <div class="step-badge">Step 3</div>
+                    <div class="help-img-container"><img src="assets/step 3 .png" alt="Save Video" class="help-step-img"></div>
+                    <h3>Auto-Save to PC</h3>
+                    <p>Wait for the progress bar to finish. Your browser will automatically save the file.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="info-section alternate-bg">
+        <div class="container text-left about-content">
+            <h2 class="section-title text-left">About <span class="green">UltraGrab Pro</span></h2>
+            <p class="intro"><strong>Video Downloader Web Platform - Designed & Developed by Asmat Buneri</strong></p>
+            <p>This web-based video downloading platform is a robust, scalable, and production-ready system designed and developed by <strong>Asmat Buneri</strong>, a senior web developer with strong expertise in backend automation, media processing, and cloud-ready architectures. The platform is powered by <strong>yt-dlp</strong>, ensuring reliable and high-quality media extraction from a wide range of supported online sources.</p>
+            
+            <div class="about-grid">
+                <div class="about-item">
+                    <h3>Project Vision</h3>
+                    <p>The core vision behind this platform is to deliver a fast, secure, and user-friendly media downloading solution that abstracts technical complexity while maintaining full control over quality, format, and performance.</p>
+                </div>
+                <div class="about-item">
+                    <h3>Core Capabilities</h3>
+                    <ul>
+                        <li>Universal Media Downloading (1000+ Sites)</li>
+                        <li>Advanced Quality Control (SD, Full HD, 4K, 8K)</li>
+                        <li>Audio-Only Mode (MP3, M4A, WAV)</li>
+                        <li>High-Performance Processing Engine</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Technical Architecture</h3>
+            <p>Our system is engineered with enterprise-level standards:</p>
+            <div class="tech-tags">
+                <span>Backend: Node.js & Python</span>
+                <span>Task Handling: Asynchronous Execution</span>
+                <span>Infrastructure: Docker-compatible</span>
+                <span>Security: Input validation & Sandboxed Execution</span>
+            </div>
+
+            <h3>Developer Profile</h3>
+            <p><strong>Asmat Buneri</strong> specializes in Python automation, backend systems, and media processing solutions. This project reflects a focus on clean code, security, and long-term maintainability.</p>
+        </div>
+    </section>
+
+    <div class="container">
+    <h1>🔒 Privacy Policy – UltraGrab</h1>
+    <p class="last-updated">Last Updated: January 2026</p>
+
+    <p>Welcome to <strong>UltraGrab</strong>. Your privacy is important to us. This Privacy Policy document explains how UltraGrab collects, uses, and protects information when you use our website and services.</p>
+
+    <h2>1. Information We Do Not Collect</h2>
+    <p>UltraGrab is designed to respect user privacy. We do not collect:</p>
+    <ul>
+        <li>Personal identification information (name, email, phone number)</li>
+        <li>User accounts or login credentials</li>
+        <li>Downloaded video or audio files</li>
+        <li>Payment or financial information</li>
+    </ul>
+    <div class="note">UltraGrab operates as a user-initiated processing tool only.</div>
+
+    <h2>2. Information We May Collect</h2>
+    <p>To ensure proper functioning and security of the service, we may temporarily collect:</p>
+    <ul>
+        <li><strong>IP address</strong> (for security, abuse prevention, and rate limiting)</li>
+        <li>Browser type and basic device information</li>
+        <li>Request timestamps and error logs</li>
+    </ul>
+    <p>This information is non-personal, temporary, and used strictly for operational purposes.</p>
+
+    <h2>3. How UltraGrab Uses Information</h2>
+    <p>Any collected data is used only to process download requests, prevent abuse, and improve service reliability. <strong>We do not sell, rent, or share user data with third parties.</strong></p>
+
+    <h2>4. Cookies</h2>
+    <p>UltraGrab does not use tracking cookies. If cookies are used in the future, they will be limited to essential functionality only.</p>
+
+    <h2>5. Third-Party Services</h2>
+    <p>We may use third-party hosting. These providers are governed by their own policies. UltraGrab is not responsible for the privacy practices of external platforms from which users choose to download content.</p>
+
+    <h2>6. Copyright & User Responsibility</h2>
+    <p>UltraGrab does not host or store any media files. All content is downloaded directly from the source.</p>
+    <p><strong>Users are solely responsible for:</strong></p>
+    <ul>
+        <li>Ensuring they have the legal right to download content</li>
+        <li>Complying with local laws and platform terms of service</li>
+    </ul>
+
+    <h2>7. Data Security</h2>
+    <p>We take technical measures to protect the service, but no online service can guarantee absolute security.</p>
+
+    <h2>8. Children’s Privacy</h2>
+    <p>UltraGrab is not intended for use by children under the age of 13.</p>
+
+    <h2>9. Changes to This Policy</h2>
+    <p>We reserve the right to modify this policy at any time. Changes will be posted on this page.</p>
+
+    <h2>10. Contact</h2>
+    <p>If you have any questions, you may contact the site administrator through the official website.</p>
+</div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 UltraGrab Pro Studio | Designed & Engineered by Asmat Buneri</p>
+        </div>
+    </footer>
+
+    <script>
+        const socket = io();
+        
+        function downloadVideo() {
+            const url = document.getElementById('urlInput').value.trim();
+            if(!url) return alert("Error: Please paste a valid video link first!");
+
+            // Show Progress Area
+            document.getElementById('progress-area').style.display = 'block';
+            document.getElementById('btn').disabled = true;
+            document.getElementById('btn').innerText = "Processing...";
+
+            // Send Download Signal to Server
+            socket.emit('start-download', url);
+        }
+
+        // Receive Real-time Progress
+        socket.on('progress', (percent) => {
+            const bar = document.getElementById('bar');
+            const text = document.getElementById('percent-text');
+            bar.style.width = percent + '%';
+            text.innerText = "Downloading: " + percent + "%";
+        });
+
+        // Handle Download Finished
+        socket.on('finished', (data) => {
+            document.getElementById('percent-text').innerText = "✅ Done! Starting Browser Download...";
+            document.getElementById('bar').style.backgroundColor = "#2ecc71";
+            
+            // Auto-trigger the file download manager
+            const downloadUrl = "/get-file/" + data.fileName;
+            const link = document.createElement('a');
+            link.href = downloadUrl;
+            link.setAttribute('download', data.fileName);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            // Reset UI after 10 seconds
+            setTimeout(() => {
+                document.getElementById('progress-area').style.display = 'none';
+                document.getElementById('btn').disabled = false;
+                document.getElementById('btn').innerText = "Download Now";
+                document.getElementById('bar').style.width = '0%';
+                document.getElementById('bar').style.backgroundColor = "#00a651";
+            }, 10000);
+        });
+
+        // Handle Errors
+        socket.on('error', (msg) => {
+            alert("Download Failed: " + msg);
+            location.reload();
+        });
+    </script>
+</body>
+</html>
