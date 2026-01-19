@@ -1,0 +1,132 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Segoe UI', sans-serif; background: #fff; color: #333; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+.green { color: #00a651; }
+
+.header { background: #fff; padding: 15px 0; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; }
+.nav-flex { display: flex; justify-content: space-between; align-items: center; }
+.nav-logo-img { width: 32px; height: 32px; margin-right: 10px; }
+.logo { display: flex; align-items: center; font-size: 24px; font-weight: 800; color: #00a651; }
+.nav-links { list-style: none; display: flex; gap: 20px; }
+.nav-links a { text-decoration: none; color: #555; font-weight: 600; }
+
+.hero { padding: 80px 0; text-align: center; background: #fcfcfc; }
+.main-hero-logo { width: 80px; margin-bottom: 20px; }
+.hero h1 { font-size: 38px; margin-bottom: 10px; }
+.hero-sub { color: #666; margin-bottom: 30px; }
+
+.search-form { display: flex; max-width: 700px; margin: 0 auto; border: 2px solid #00a651; border-radius: 50px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+.search-form input { flex: 1; padding: 18px 25px; border: none; outline: none; }
+.search-form button { background: #00a651; color: #fff; border: none; padding: 0 35px; font-weight: bold; cursor: pointer; }
+
+.info-section { padding: 70px 0; border-bottom: 1px solid #eee; }
+.alternate-bg { background: #f9f9f9; }
+.section-title { text-align: center; margin-bottom: 40px; font-size: 30px; }
+.sites-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; text-align: center; }
+.site-card { background: #fff; padding: 20px; border-radius: 10px; border: 1px solid #eee; }
+.site-card i { font-size: 30px; color: #00a651; margin-bottom: 10px; display: block; }
+
+.about-card { line-height: 1.8; color: #555; }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 20px; }
+.policy-box { background: #fff; padding: 25px; border-left: 5px solid #00a651; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
+
+.footer { padding: 40px; text-align: center; color: #888; font-size: 14px; }
+.hidden { display: none; }
+.spinner { border: 4px solid #f3f3f3; border-top: 4px solid #00a651; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 20px auto; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/* Help Section Styles */
+.section-subtitle {
+    text-align: center;
+    color: #666;
+    margin-top: -30px;
+    margin-bottom: 50px;
+}
+
+.help-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.help-card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    border: 1px solid #eee;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    position: relative;
+    transition: 0.3s;
+}
+
+.help-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.step-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #00a651;
+    color: white;
+    padding: 5px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.help-img-container {
+    width: 100%;
+    height: 180px;
+    background: #f0f0f0; /* Placeholder color agar image na ho */
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.help-step-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Photo ko frame mein fit karne ke liye */
+}
+
+.help-card h3 {
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.help-card p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+}
+.progress-bg {
+    width: 100%;
+    max-width: 600px;
+    background: #e0e0e0;
+    height: 15px;
+    border-radius: 10px;
+    margin: 10px auto;
+    overflow: hidden;
+}
+
+.progress-fill {
+    width: 0%;
+    height: 100%;
+    background: #00a651;
+    transition: width 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 166, 81, 0.4);
+}
+
+.status-msg {
+    font-size: 12px;
+    color: #888;
+    margin-top: 5px;
+}
